@@ -9,9 +9,6 @@
     <link href="style.css" rel="stylesheet">
 </head>
 
-
-
-
 <body>
  
   <!-- HEADER -->
@@ -29,9 +26,9 @@
     <div class="row">
  
       <!-- COLUMN 1 -->
-      <div class="col-12 col-md-6 col-lg-4">
+      <div class="col-12 col-md-6 col-lg-4 d-flex flex-column">
         <div class="row">
-          <div class="col-12 p-1">
+          <div class="col-12 p-2">
             <div class="card">
               <div class="card-head"><strong>Today</strong><span class="muted">0 of 5 done</span></div>
             <div class="task">
@@ -59,32 +56,36 @@
             <div class="task-text">Add Activities section to portfolio<small>Web Dev &bull; Tue, Oct 13</small></div>
             <span class="tag tag-medium">Medium</span>
             </div>
+
+            
               
             </div>
           </div>
         </div>
- 
-        <div class="row">
-          <div class="col-12 p-1">
+
+        <div class="row">                                  <!-- OVERALL PROGRESS (bago) -->
+          <div class="col-12 p-2">
             <div class="card">
-              <div class="card-head"><strong>Overall Progress</strong><span class="muted">0 of 8 done</span></div>
+              <div class="card-head"><strong>Overall Progress</strong><span class="muted">0 of 9 done</span></div>
               <div class="big-number">0%</div>
-              <progress value="0" max="8"></progress>
+              <progress value="0" max="9"></progress>
             </div>
           </div>
         </div>
+
+        
  
-        <div class="row">
-          <div class="col-12 p-1">
-            <div class="card">
+        <div class="row flex-grow-1">
+          <div class="col-12 p-2 d-flex">
+            <div class="card flex-grow-1">
               <div class="card-head"><strong>By Priority</strong></div>
               <div class="stat-line">
                 <span><span class="tag tag-high">High</span> <span class="muted">4 tasks</span></span>
                 <strong>4 left</strong>
               </div>
               <div class="stat-line">
-                <span><span class="tag tag-medium">Medium</span> <span class="muted">3 tasks</span></span>
-                <strong>3 left</strong>
+                <span><span class="tag tag-medium">Medium</span> <span class="muted">4 tasks</span></span>
+                <strong>4 left</strong>
               </div>
               <div class="stat-line">
                 <span><span class="tag tag-low">Low</span> <span class="muted">1 task</span></span>
@@ -96,11 +97,11 @@
       </div>
  
       <!-- COLUMN 2 -->
-      <div class="col-12 col-md-6 col-lg-4">
+      <div class="col-12 col-md-6 col-lg-4 d-flex flex-column">
         <div class="row">
-          <div class="col-12 p-1">
+          <div class="col-12 p-2">
             <div class="card">
-                <div class="card-head"><strong>Upcoming</strong><span class="muted">3 left</span></div>
+                <div class="card-head"><strong>Upcoming</strong><span class="muted">4 left</span></div>
                 <div class="task">
                 <input type="checkbox">
                 <div class="task-text">IT Elective 1 midterm (Modules 1&ndash;6)<small>Fri, Oct 16 &bull; IT Elective 1</small></div>
@@ -127,39 +128,39 @@
           </div>
         </div>
  
-        <div class="row">
-          <div class="col-12 p-1">
-            <div class="card">
+        <div class="row flex-grow-1">
+          <div class="col-12 p-2 d-flex">
+            <div class="card flex-grow-1 d-flex flex-column justify-content-between">
               <div class="card-head"><strong>By Category</strong></div>
-                <div class="category">
+              <div class="category">
                 <div class="card-head"><strong>Multimedia</strong><span class="muted">0 of 1 done</span></div>
-                <progress value="0" max="1"></progress>
-                </div>
-                <div class="category">
+                <div class="progress"><div class="progress-bar" style="width: 0%"></div></div>
+              </div>
+              <div class="category">
                 <div class="card-head"><strong>Systems Integration</strong><span class="muted">0 of 1 done</span></div>
-                <progress value="0" max="1"></progress>
-                </div>
-                <div class="category">
+                <div class="progress"><div class="progress-bar" style="width: 0%"></div></div>
+              </div>
+              <div class="category">
                 <div class="card-head"><strong>Web Dev</strong><span class="muted">0 of 3 done</span></div>
-                <progress value="0" max="3"></progress>
-                </div>
-                <div class="category">
+                <div class="progress"><div class="progress-bar" style="width: 0%"></div></div>
+              </div>
+              <div class="category">
                 <div class="card-head"><strong>IT Elective 1</strong><span class="muted">0 of 1 done</span></div>
-                <progress value="0" max="1"></progress>
-                </div>
-                <div class="category">
+                <div class="progress"><div class="progress-bar" style="width: 0%"></div></div>
+              </div>
+              <div class="category">
                 <div class="card-head"><strong>Art Appreciation</strong><span class="muted">0 of 2 done</span></div>
-                <progress value="0" max="2"></progress>
-                </div>
+                <div class="progress"><div class="progress-bar" style="width: 0%"></div></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
  
       <!-- COLUMN 3 -->
-      <div class="col-12 col-lg-4">
+      <div class="col-12 col-lg-4 d-flex flex-column">
         <div class="row">
-          <div class="col-12 p-1">
+          <div class="col-12 p-2">
             <div class="card card-top">
               <div class="card-head"><strong>Top Priority</strong><span class="tag">High</span></div>
               
@@ -180,20 +181,20 @@
         </div>
  
         <div class="row">
-          <div class="col-4 p-1">
+          <div class="col-4 p-2">
             <div class="card card-stat"><div class="num">12</div><div class="muted">Total</div></div>
           </div>
-          <div class="col-4 p-1">
+          <div class="col-4 p-2">
             <div class="card card-stat"><div class="num">4</div><div class="muted">Done</div></div>
           </div>
-          <div class="col-4 p-1">
-            <div class="card card-stat"><div class="num">8</div><div class="muted">Left</div></div>
+          <div class="col-4 p-2">
+            <div class="card card-stat"><div class="num">9</div><div class="muted">Left</div></div>
           </div>
         </div>
  
-        <div class="row">
-          <div class="col-12 p-1">
-            <div class="card">
+        <div class="row flex-grow-1">
+          <div class="col-12 p-2 d-flex">
+            <div class="card flex-grow-1 d-flex flex-column">
               <div class="card-head"><strong>Add Task</strong></div>
               <div class="form-field">
                 <label for="taskName">Task</label>
@@ -223,7 +224,7 @@
                 <label for="taskDue">Due date</label>
                 <input type="date" id="taskDue">
               </div>
-              <button type="button" class="btn-add">Add Task</button>
+              <button type="button" class="btn-add mt-auto">Add Task</button>
             </div>
           </div>
         </div>
@@ -232,17 +233,17 @@
  
     <!-- THIS WEEK -->
     <div class="row">
-      <div class="col-12 p-1">
+      <div class="col-12 p-2">
         <div class="card">
           <div class="card-head"><strong>This Week</strong><span class="muted">Tasks due each day</span></div>
           <div class="row">
-            <div class="col p-1"><div class="day day-today"><small>Sun</small><span class="num">11</span><small>task: 5</small></div></div>
-            <div class="col p-1"><div class="day"><small>Mon</small><span class="num">12</span><small>task: 2</small></div></div>
-            <div class="col p-1"><div class="day"><small>Tue</small><span class="num">13</span><small>task: 1</small></div></div>
-            <div class="col p-1"><div class="day"><small>Wed</small><span class="num">14</span><small>task: 0</small></div></div>
-            <div class="col p-1"><div class="day"><small>Thu</small><span class="num">15</span><small>task: 1</small></div></div>
-            <div class="col p-1"><div class="day"><small>Fri</small><span class="num">16</span><small>task: 1</small></div></div>
-            <div class="col p-1"><div class="day"><small>Sat</small><span class="num">17</span><small>task: 2</small></div></div>
+            <div class="col p-2"><div class="day day-today"><small>Sun</small><span class="num">11</span><small>task: 5</small></div></div>
+            <div class="col p-2"><div class="day"><small>Mon</small><span class="num">12</span><small>task: 2</small></div></div>
+            <div class="col p-2"><div class="day"><small>Tue</small><span class="num">13</span><small>task: 1</small></div></div>
+            <div class="col p-2"><div class="day"><small>Wed</small><span class="num">14</span><small>task: 0</small></div></div>
+            <div class="col p-2"><div class="day"><small>Thu</small><span class="num">15</span><small>task: 1</small></div></div>
+            <div class="col p-2"><div class="day"><small>Fri</small><span class="num">16</span><small>task: 1</small></div></div>
+            <div class="col p-2"><div class="day"><small>Sat</small><span class="num">17</span><small>task: 2</small></div></div>
           </div>
         </div>
       </div>

@@ -197,7 +197,7 @@ body {
   transition: background-color 0.15s ease;
 }
 .day:hover { background: rgba(255, 255, 255, 0.85); }
-.day small:first-child {
+.day-name {
   display: block;
   margin: 0 0.9rem 0.4rem;
   padding-bottom: 0.4rem;
@@ -205,15 +205,12 @@ body {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #8aa399;
+  color: #6f8a7f;
   border-bottom: 1px solid rgba(20, 90, 65, 0.12);
 }
-.day .num { display: block; margin: 0.1rem 0 0.2rem; font-size: 1.6rem; font-weight: 700; color: #9db3aa; }
-.day small:last-child { display: block; font-size: 11px; color: #9db3aa; }
+.day .num { display: block; margin: 0.1rem 0 0.2rem; font-size: 1.6rem; font-weight: 700; color: #6f8a7f; }
+.day-count { display: block; font-size: 11px; color: #6f8a7f; }
 
-.card:has(.day) .col:nth-child(n+3) .day { opacity: 0.9; }
-.card:has(.day) .col:nth-child(n+5) .day { opacity: 0.78; }
-.card:has(.day) .col:nth-child(n+7) .day { opacity: 0.66; }
 
 .day-today {
   background: linear-gradient(160deg, #1cc88c, #0f9e6c);
@@ -222,9 +219,9 @@ body {
 }
 .day-today:hover { background: linear-gradient(160deg, #1cc88c, #0f9e6c); }
 .day-today .num,
-.day-today small:first-child,
-.day-today small:last-child { color: #fff; }
-.day-today small:first-child { border-bottom-color: rgba(255, 255, 255, 0.6); }
+.day-today .day-name,
+.day-today .day-count { color: #fff; }
+.day-today .day-name { border-bottom-color: rgba(255, 255, 255, 0.6); }
 
 .footer-text { text-align: center; color: var(--muted); padding: 1.5rem 0; }
 

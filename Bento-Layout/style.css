@@ -276,8 +276,6 @@ body {
 
 .row { --bs-gutter-x: 1rem; }
 
-body > .container-fluid:first-of-type .col { padding-top: 2.5rem !important; padding-bottom: 1.75rem !important; }
-
 .page-date {
   display: inline-flex;
   align-items: center;

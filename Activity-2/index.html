@@ -1,16 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Activity 2</h1>
-    <p id="output"></p>
+<!doctype html>
+<html lang="en" data-bs-theme="light">
 
+<head>
+    <title>IskoFind</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="header-bar">
+        <div class="container d-flex justify-content-between align-items-center py-3">
+            <div class="d-flex align-items-center">
+                <div class="logo-icon rounded-4">📍</div>
+                <div class="logo-text ms-3">IskoFind</div>
+            </div>
+            <div class="nav-link-text">Study Spots</div>
+        </div>
+    </div>
+
+
+    <div class="container hero">
+        <div class="pill-label rounded-pill">📍 Study Spots near PUP</div>
+        <h1 class="hero-title mt-4">
+            Find your next<br />
+            <span class="gradient-text">study spot.</span>
+        </h1>
+        <p class="hero-text mt-3">
+            Discover quiet, comfortable, and budget-friendly places to study around
+            campus.
+        </p>
+    </div>
+
+
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="parent">
+
+        </div>
+    </div>
+
+    <div class="container footer-line mt-5 py-3">
+        <span class="gradient-text">IskoFind</span> · A simple guide for PUP
+        students
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <script>
-        document.getElementById("output").textContent = "Hello from JavaScript!";
+        var spots = [
+            {
+                name: "Library Reading Room",
+                description: "Quiet and air-conditioned study space.",
+                price: "Free",
+                image: "images/library.jpg",
+            },
+            {
+                name: "Cozy Corner Café",
+                description: "Coffee, Wi-Fi, and outlets for longer study sessions.",
+                price: "₱100–150",
+                image: "images/cozy-cafe.jpg",
+            },
+            {
+                name: "Open Quad Benches",
+                description: "Shaded benches, fresh air, and a relaxing environment.",
+                price: "Free",
+                image: "images/quad.jpg",
+            },
+            {
+                name: "Tambayan Milk Tea",
+                description: "Affordable milk tea and a chill place to study.",
+                price: "₱80–120",
+                image: "images/milk-tea.jpg",
+            },
+            {
+                name: "Quiet Study Lounge",
+                description: "A calm space designed for individual study and review.",
+                price: "₱150–200",
+                image: "images/lounge.jpg",
+            },
+            {
+                name: "Riverside Coffee Nook",
+                description: "A peaceful café with nice views and a relaxing atmosphere.",
+                price: "₱120–180",
+                image: "images/riverside.jpg",
+            },
+        ];
+
+        var elParent = document.getElementById("parent");
+
+        for (var i = 0; i < spots.length; i++) {
+            elParent.innerHTML +=
+                `<div class="col">
+            <div class="card spot-card p-3 h-100 shadow rounded-4">
+              <img src="` + spots[i].image + `" alt="` + spots[i].name + `" class="spot-img rounded-4" />
+              <div class="spot-name mt-3">` + spots[i].name + `</div>
+              <div class="spot-description mt-1">` + spots[i].description + `</div>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+                <span class="price-pill rounded-pill">` + spots[i].price + `</span>
+                <a href="#" class="arrow-btn rounded-circle text-decoration-none">→</a>
+              </div>
+            </div>
+          </div>`;
+        }
     </script>
 </body>
+
 </html>

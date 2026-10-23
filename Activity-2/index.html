@@ -117,7 +117,9 @@
               <div class="spot-description mt-1">` + spots[i].description + `</div>
               <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
                 <span class="price-pill rounded-pill">` + spots[i].price + `</span>
-                <a href="#" class="arrow-btn rounded-circle text-decoration-none">→</a>
+                <a href="` + spots[i].source + `" target="_blank" class="arrow-btn rounded-circle text-decoration-none">
+                <img src="images/pin-blue.svg" alt="Location" class="arrow-icon" />
+                </a>
               </div>
             </div>
           </div>`;

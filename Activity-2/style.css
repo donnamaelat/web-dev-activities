@@ -6,7 +6,7 @@ body {
     radial-gradient(circle at 0% 75%, rgba(134, 239, 172, 0.15), transparent 20%);
   background-repeat: no-repeat;
   color: #1e2a47;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
 }
 
 .gradient-text {
@@ -18,18 +18,18 @@ body {
 }
 
 .header-wrap {
-  display: flex;
-  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-bar {
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid #eef0f6;
-  border-radius: 24px;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+  border-radius: 50px;
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.12);
 }
 
 .logo-icon {
@@ -69,6 +69,7 @@ body {
   color: #4f6df5;
   font-weight: 500;
   font-size: 15px;
+  letter-spacing: 0.02em;
   padding: 8px 18px;
   box-shadow: 0 4px 14px rgba(99, 102, 241, 0.1);
 }
@@ -81,15 +82,17 @@ body {
 }
 
 .hero-title {
-  font-size: 56px;
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
   font-weight: 700;
   line-height: 1.1;
+  letter-spacing: -0.02em;
   color: #1e2a47;
 }
 
 .hero-text {
-  font-size: 20px;
-  color: #8a94ad;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #6b7694;
   max-width: 520px;
 }
 
@@ -108,14 +111,16 @@ body {
 }
 
 .spot-name {
-  font-size: 19px;
+  font-size: 1.2rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
   color: #1e2a47;
 }
 
 .spot-description {
-  font-size: 15px;
-  color: #8a94ad;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #6b7694;
 }
 
 .price-pill {
@@ -136,9 +141,36 @@ body {
   color: #1e2a47;
 }
 
-
 .footer-line {
   border-top: 1px solid #e8ebf3;
   font-size: 14px;
-  color: #8a94ad;
+  color: #6b7694;
+  text-align: center;
+}
+
+.hero {
+  position: relative;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: 28%;
+  width: 52%;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1085 788'%3E%3Cpath fill='%23dfe5f1' d='M415 250h30v22h-30z M448 262h28v26h-28z M478 258h26v22h-26z M420 288h24v26h-24z M450 300h26v28h-26z M480 294h28v24h-28z M428 340h30v26h-30z M462 372h28v24h-28z M455 440h30v26h-30z M482 470h30v28h-30z M447 502h28v26h-28z M450 535h28v24h-28z M420 700h28v30h-28z M455 722h30v26h-30z M525 712h40v34h-40z M545 745h34v30h-34z M310 405h70v95h-70z M280 15h50v190h-50z M135 195h65v90h-65z M870 190h70v50h-70z M960 150h46v56h-46z M1000 40h70v56h-70z M905 290h150v190h-150z M30 480h50v40h-50z M190 580h50v45h-50z M240 635h60v50h-60z M120 690h50v40h-50z M195 685h45v40h-45z M300 700h40v45h-40z M380 745h50v40h-50z M70 560h40v40h-40z M680 125h55v70h-55z M600 70h50v50h-50z M580 175h60v55h-60z M590 255h40v40h-40z'/%3E%3Cg fill='none' stroke='%23b4c2dc' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke-width='24' d='M40 462 L240 388 L520 336 L720 240 L960 125'/%3E%3Cpath stroke-width='16' d='M385 -10 L400 300 L437 565'/%3E%3Cpath stroke-width='22' d='M470 -10 L500 150 L525 335 L550 560 L565 690'/%3E%3Cpath stroke-width='14' d='M552 -10 C555 30 540 55 515 70'/%3E%3Cpath stroke-width='20' d='M30 450 L150 640 L245 800'/%3E%3Cpath stroke-width='18' d='M60 20 L110 120 L135 215 L220 378'/%3E%3Cpath stroke-width='18' d='M722 250 L800 312 L870 405 L965 525 L942 560 L940 800'/%3E%3Cpath stroke-width='14' d='M388 355 C330 365 290 385 288 460'/%3E%3Cpath stroke-width='16' d='M905 -10 L962 95 L1095 235'/%3E%3Cpath stroke-width='12' d='M660 -10 L700 40 L780 95'/%3E%3Cpath stroke-width='14' d='M405 640 L408 678 L550 690'/%3E%3Cpath stroke-width='12' d='M405 640 L545 628'/%3E%3Cpath stroke-width='12' d='M950 545 L1095 505'/%3E%3Cpath stroke-width='12' d='M955 700 L1095 668'/%3E%3Cpath stroke-width='12' d='M430 762 L940 752'/%3E%3Cpath stroke-width='8' d='M820 290 L850 265 L880 262'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 72%);
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 72%);
 }

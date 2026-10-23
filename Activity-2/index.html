@@ -63,48 +63,43 @@
     <script>
         var spots = [
             {
-                name: "PUP Sto. Tomas Library",
-                description: "The campus library, a quiet on-campus space for study and research.",
+                name: "Library Reading Room",
+                description: "Quiet and air-conditioned study space.",
                 price: "Free",
-                image: "images/pup-library.jpg",
-                map: "https://maps.google.com/maps?cid=15039983652105805881",
+                image: "images/library.jpg",
             },
             {
-                name: "But First, Coffee",
-                description: "A bright, student-friendly café with extended hours for late study sessions.",
-                price: "Under ₱500",
-                image: "images/bfc.jpg",
-                map: "https://maps.google.com/maps?cid=11475339472633486776",
+                name: "Cozy Corner Café",
+                description: "Coffee, Wi-Fi, and outlets for longer study sessions.",
+                price: "₱100–150",
+                image: "images/cozy-cafe.jpg",
             },
             {
-                name: "Coffee Buddy",
-                description: "A budget-friendly café near campus with free Wi-Fi. Power outlets are limited, so charge your devices beforehand.",
-                price: "Under ₱500",
-                image: "images/coffee-buddy.jpg",
-                map: "https://maps.google.com/maps?cid=17490797363386172923",
+                name: "Open Quad Benches",
+                description: "Shaded benches, fresh air, and a relaxing environment.",
+                price: "Free",
+                image: "images/quad.jpg",
             },
             {
-                name: "Variables Specialty Coffee",
-                description: "A calm café with Wi-Fi that is typically quiet on weekdays, suited for focused work.",
-                price: "Under ₱500",
-                image: "images/variables.jpg",
-                map: "https://maps.google.com/maps?cid=14287501278967515194",
+                name: "Milk Tea Shop",
+                description: "Affordable milk tea and a chill place to study.",
+                price: "₱80–120",
+                image: "images/milk-tea.jpg",
             },
             {
-                name: "Figaro Coffee (SM Sto. Tomas)",
-                description: "A mall-based café with ample seating. Outdoor tables are generally more comfortable.",
-                price: "₱1–1000",
-                image: "images/figaro.jpg",
-                map: "https://maps.google.com/maps?cid=5347281878867517370",
+                name: "Quiet Study Lounge",
+                description: "A calm space designed for individual study and review.",
+                price: "₱150–200",
+                image: "images/lounge.jpg",
             },
             {
-                name: "Krāv Café",
-                description: "A cozy café with reliable Wi-Fi, a good option for longer study sessions. About 1.5 km from campus.",
-                price: "Under ₱500",
-                image: "images/krav-cafe.jpg",
-                map: "https://maps.google.com/maps?cid=12887979887051919885",
+                name: "Riverside Coffee Nook",
+                description: "A peaceful café with nice views and a relaxing atmosphere.",
+                price: "₱120–180",
+                image: "images/riverside.jpg",
             },
         ];
+
         var elParent = document.getElementById("parent");
 
         for (var i = 0; i < spots.length; i++) {
@@ -116,7 +111,7 @@
               <div class="spot-description mt-1">` + spots[i].description + `</div>
               <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
                 <span class="price-pill rounded-pill">` + spots[i].price + `</span>
-                <a href="` + spots[i].map + `" target="_blank" rel="noopener" class="arrow-btn rounded-circle text-decoration-none" aria-label="View on map"><img src="images/pin-blue.svg" alt="" class="map-icon" /></a>
+                <a href="#" class="arrow-btn rounded-circle text-decoration-none">→</a>
               </div>
             </div>
           </div>`;

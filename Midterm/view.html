@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weapon Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container-fluid bg-danger position-fixed top-0 z-1 shadow">
+    <div class="row">
+      <div class="col">
+        <div class="text-center display-6 text-white py-3">Valorant Armory</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5 pt-5">
+    <div class="row">
+      <div class="col">
+        <a href="index.html" id="backlink">
+          <div class="btn btn-outline-secondary">Back to list</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <div class="card shadow rounded-5 p-4 p-md-5 text-center">
+
+          <div id="imageContainer" class="mx-auto rounded-4 p-3 w-100 bg-dark">
+            <img src="" class="img-fluid" id="image">
+          </div>
+
+          <div class="h3 my-3" id="name">
+            <div class="spinner-border text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="rounded-5 px-4 py-1" id="category"></span>
+          </div>
+
+          <div class="row mt-4 text-start" id="stats">
+
+          </div>
+
+          <div class="table-responsive mt-4" id="damage">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <script>
+    const colors = {
+      Sidearm: '#DEF3FD',
+      SMG: '#DEFDE0',
+      Shotgun: '#f8d5a3',
+      Rifle: '#FDDFDF',
+      Sniper: '#cbc3e3',
+      Heavy: '#eaeda1',
+      Melee: '#F5F5F5'
+    };
+
+    var elName = document.getElementById("name");
+    var elImage = document.getElementById("image");
+    var elCategory = document.getElementById("category");
+    var elBacklink = document.getElementById("backlink");
+    var elStats = document.getElementById("stats");
+    var elDamage = document.getElementById("damage");
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get('id');
+    const page = urlParams.get('page');
+
+    if (page != null) {
+      elBacklink.href = "index.html?page=" + page;
+    }
+
+    const getWeapon = async () => {
+      elName.innerHTML = "Loading...";
+      elImage.src = "";
+      elCategory.innerHTML = "";
+
+      const response = await fetch('https://valorant-api.com/v1/weapons/' + id);
+      const result = await response.json();
+      const weapon = result.data;
+
+      var category = weapon.category.split("::")[1];
+
+      elName.innerHTML = weapon.displayName;
+      elImage.src = weapon.displayIcon;
+      elCategory.innerHTML = category;
+      elCategory.style.backgroundColor = colors[category];
+
+      if (weapon.weaponStats == null) {
+        elStats.innerHTML = '<div class="col text-center">No stats available for this weapon.</div>';
+        return;
+      }
+
+      var stats = weapon.weaponStats;
+      var statsHtml = '';
+
+      if (weapon.shopData != null) {
+        statsHtml += createStat('cost', weapon.shopData.cost);
+      }
+
+      for (var key in stats) {
+        var value = stats[key];
+
+        if (value == null || typeof value === 'object') {
+          continue;
+        }
+
+        statsHtml += createStat(key, value);
+      }
+
+      elStats.innerHTML = statsHtml;
+
+      var rows = '';
+      for (var i = 0; i < stats.damageRanges.length; i++) {
+        var d = stats.damageRanges[i];
+        rows += `
+          <tr>
+            <td>` + d.rangeStartMeters + `m - ` + d.rangeEndMeters + `m</td>
+            <td>` + d.headDamage + `</td>
+            <td>` + d.bodyDamage + `</td>
+            <td>` + d.legDamage + `</td>
+          </tr>
+        `;
+      }
+
+      elDamage.innerHTML = `
+        <table class="table table-striped text-center">
+          <thead>
+            <tr><th>Range</th><th>Head</th><th>Body</th><th>Leg</th></tr>
+          </thead>
+          <tbody>` + rows + `</tbody>
+        </table>
+      `;
+    }
+
+    function formatLabel(key) {
+      var spaced = key.replace(/([A-Z])/g, ' $1');
+      return spaced.charAt(0).toUpperCase() + spaced.slice(1);
+    }
+
+    function createStat(key, value) {
+      if (typeof value === 'string' && value.includes('::')) {
+        value = value.split('::')[1];
+      }
+
+      return `
+        <div class="col-6 col-md-4 mb-3"><b>` + formatLabel(key) + `:</b> ` + value + `</div>
+      `;
+    }
+
+    if (id != null) {
+      getWeapon();
+    }
+  </script>
+</body>
+
+</html>

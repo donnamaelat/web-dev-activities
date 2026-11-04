@@ -1,0 +1,291 @@
+body {
+  background: #0a0a0d;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.valo-nav {
+  background: #0c0c10;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  min-height: 75px;
+  padding: 0;
+}
+
+.valo-logo {
+  height: 38px;
+  width: auto;
+}
+
+.valo-logo-text {
+  color: #ff4655;
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+}
+
+.valo-nav .nav-link {
+  color: #9a9aa3;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 1.6rem 1.3rem;
+  border-bottom: 3px solid transparent;
+}
+
+.valo-nav .nav-link:hover {
+  color: #fff;
+}
+
+.valo-nav .nav-link.active {
+  color: #fff;
+  border-bottom-color: #ff3347;
+  background: linear-gradient(to top, rgba(255, 51, 71, .25), transparent);
+  box-shadow: 0 6px 14px -8px #ff3347;
+}
+
+.valo-search {
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 6px;
+  padding: 0 12px;
+  width: 320px;
+  max-width: 100%;
+  transition: border-color .2s;
+}
+
+.valo-search:focus-within {
+  border-color: #ff3347;
+}
+
+.valo-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  width: 100%;
+  padding: 10px 8px;
+}
+
+.valo-search input::placeholder {
+  color: #7d7d86;
+}
+
+/* side nav bar */
+
+.valo-layout {
+  padding-top: 100px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.valo-sidebar {
+  position: sticky;
+  top: 95px;
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #0c0c10;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 4px;
+  padding: 12px 0 28px;
+}
+
+.side-link {
+  display: flex;
+  align-items: center;
+  color: #c9c9d1;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 18px 24px;
+  border-left: 3px solid transparent;
+  transition: background .2s, color .2s;
+}
+
+.side-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, .04);
+}
+
+.side-link.active {
+  color: #fff;
+  border-left-color: #ff3347;
+  background: linear-gradient(to right, rgba(255, 51, 71, .3), transparent);
+}
+
+.valo-side-bottom {
+  padding-left: 24px;
+}
+
+.valo-side-logo {
+  display: block;
+  height: 66px;
+  width: auto;
+  margin-bottom: 24px;
+}
+
+.valo-tagline {
+  color: #ff4655;
+  font-size: .8rem;
+  letter-spacing: 6px;
+  line-height: 1.6;
+}
+
+.side-icon {
+  width: 36px;
+  height: 20px;
+  margin-right: 14px;
+  object-fit: contain;
+  fill: currentColor;
+  color: #7d7d86;
+  flex-shrink: 0;
+}
+
+img.side-icon {
+  opacity: .55;
+  transition: opacity .2s;
+}
+
+.side-link:hover img.side-icon,
+.side-link.active img.side-icon {
+  opacity: 1;
+}
+
+.side-link:hover .side-icon {
+  color: #fff;
+}
+
+.side-link.active .side-icon {
+  color: #ff3347;
+}
+
+.side-link {
+  cursor: pointer;
+}
+
+.valo-card {
+  display: block;
+  margin: 12px 0;
+  padding: 18px 22px 20px;
+  background: #0c0c10;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  transition: border-color .2s;
+}
+
+.valo-card:hover {
+  color: #fff;
+  border-color: #ff3347;
+}
+
+.valo-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #c9c9d1;
+  font-size: .85rem;
+  letter-spacing: 2px;
+}
+
+.valo-card-category {
+  text-transform: uppercase;
+}
+
+.valo-card-category::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  background: #ff3347;
+}
+
+.valo-card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 170px;
+  margin: 10px 0;
+}
+
+.valo-card-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.valo-card-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #e8e8ec;
+}
+
+.valo-card-name img {
+  height: 26px;
+  width: auto;
+}
+
+.valo-card-stats {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 14px;
+  padding-top: 18px;
+}
+
+.valo-card-stats::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+    background: linear-gradient(to right, transparent, rgba(154, 154, 163, .45) 20%, rgba(154, 154, 163, .45) 80%, transparent);
+}
+
+.valo-card-stats > div {
+  position: relative;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.valo-card-stats > div + div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 51, 71, .4), transparent);
+}
+
+.stat-label {
+  color: #9a9aa3;
+  font-size: .75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.valo-card-view {
+  margin-top: 16px;
+  color: #ff4655;
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Weapon Details</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
@@ -60,8 +60,8 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
   <script>
     const colors = {
@@ -91,7 +91,11 @@
     }
 
     const getWeapon = async () => {
-      elName.innerHTML = "Loading...";
+      elName.innerHTML = `
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      `;
       elImage.src = "";
       elCategory.innerHTML = "";
 
@@ -112,23 +116,15 @@
       }
 
       var stats = weapon.weaponStats;
-      var statsHtml = '';
 
-      if (weapon.shopData != null) {
-        statsHtml += createStat('cost', weapon.shopData.cost);
-      }
-
-      for (var key in stats) {
-        var value = stats[key];
-
-        if (value == null || typeof value === 'object') {
-          continue;
-        }
-
-        statsHtml += createStat(key, value);
-      }
-
-      elStats.innerHTML = statsHtml;
+      elStats.innerHTML = `
+        <div class="col-6 col-md-4 mb-3"><b>Cost:</b> ` + weapon.shopData.cost + `</div>
+        <div class="col-6 col-md-4 mb-3"><b>Fire Rate:</b> ` + stats.fireRate + `</div>
+        <div class="col-6 col-md-4 mb-3"><b>Magazine:</b> ` + stats.magazineSize + `</div>
+        <div class="col-6 col-md-4 mb-3"><b>Reload Time:</b> ` + stats.reloadTimeSeconds + `s</div>
+        <div class="col-6 col-md-4 mb-3"><b>Equip Time:</b> ` + stats.equipTimeSeconds + `s</div>
+        <div class="col-6 col-md-4 mb-3"><b>Wall Penetration:</b> ` + stats.wallPenetration.split("::")[1] + `</div>
+      `;
 
       var rows = '';
       for (var i = 0; i < stats.damageRanges.length; i++) {
@@ -150,21 +146,6 @@
           </thead>
           <tbody>` + rows + `</tbody>
         </table>
-      `;
-    }
-
-    function formatLabel(key) {
-      var spaced = key.replace(/([A-Z])/g, ' $1');
-      return spaced.charAt(0).toUpperCase() + spaced.slice(1);
-    }
-
-    function createStat(key, value) {
-      if (typeof value === 'string' && value.includes('::')) {
-        value = value.split('::')[1];
-      }
-
-      return `
-        <div class="col-6 col-md-4 mb-3"><b>` + formatLabel(key) + `:</b> ` + value + `</div>
       `;
     }
 

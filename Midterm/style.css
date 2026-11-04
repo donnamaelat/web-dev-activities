@@ -29,7 +29,7 @@ body {
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  padding: 1.6rem 1.3rem;
+  padding: 25px;
   border-bottom: 3px solid transparent;
 }
 
@@ -290,4 +290,68 @@ img.side-icon {
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+.pagination .page-link {
+  background: #0c0c10;
+  border: 1px solid rgba(255, 255, 255, .15);
+  color: #c9c9d1;
+  cursor: pointer;
+  padding: 8px 22px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.pagination .page-link:hover {
+  background: rgba(255, 51, 71, .15);
+  border-color: #ff3347;
+  color: #fff;
+}
+
+.pagination .page-link:focus {
+  box-shadow: none;
+}
+
+#currentpage {
+  color: #fff;
+  border-color: #ff3347;
+}
+
+.pagination {
+  gap: 12px;
+  margin: 24px 0 40px;
+}
+
+.pagination .page-item .page-link {
+  margin-left: 0;
+  min-width: 110px;
+  padding: 10px 24px;
+  background: #0c0c10;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 4px;
+  color: #c9c9d1;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, color .2s;
+}
+
+.pagination .page-item .page-link:hover {
+  background: rgba(255, 51, 71, .15);
+  border-color: #ff3347;
+  color: #fff;
+}
+
+.pagination .page-item .page-link:focus {
+  box-shadow: none;
+}
+
+.pagination #currentpage {
+  min-width: 56px;
+  color: #fff;
+  border-color: #ff3347;
+  cursor: default;
 }

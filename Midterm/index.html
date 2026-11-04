@@ -32,12 +32,12 @@
           <li class="nav-item"><a class="nav-link" href="#">Collection</a></li>
         </ul>
 
-        <form class="valo-search d-flex align-items-center my-2 my-lg-0" onsubmit="return false">
+        <form class="valo-search d-flex align-items-center my-2 my-lg-0" onsubmit="searchWeapons(); return false">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a9aa3" stroke-width="2">
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
-          <input type="text" id="search" placeholder="Search for a weapon...">
+          <input type="text" id="searchInput" placeholder="Search for a weapon..." onkeyup="searchWeapons()">
         </form>
       </div>
 
@@ -77,17 +77,17 @@
       </aside>
 
       <main class="col-12 col-lg-10">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
+        <div class="row" id="parent">
+
+        </div>
+
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center my-4">
             <li class="page-item"><a class="page-link" onclick="prev()">Previous</a></li>
             <li class="page-item"><a class="page-link" id="currentpage">1</a></li>
             <li class="page-item"><a class="page-link" onclick="next()">Next</a></li>
           </ul>
         </nav>
-
-        <div class="row" id="parent">
-
-        </div>
       </main>
 
     </div>
@@ -111,6 +111,7 @@
     // element initializations
     var elCurrentPage = document.getElementById("currentpage");
     var elParent = document.getElementById("parent");
+    var inSearchInput = document.getElementById("searchInput");
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -124,10 +125,14 @@
     //pagination variables
     var allWeapons = [];
     var weapons = [];
-    var currentCategory = "All";
+    var currentCategory = urlParams.get('category');
+    if (currentCategory == null) {
+      currentCategory = "All";
+    }
     var lastWeapon = 0;
     var perPage = 8;
     var finalPage = 1;
+    var searchText = "";
 
     const getWeapons = async () => {
       elParent.innerHTML = `
@@ -143,6 +148,7 @@
       allWeapons = result.data;
 
       showIcons();
+      markActiveLink();
       applyFilter();
     }
 
@@ -167,8 +173,9 @@
 
       for (var i = 0; i < allWeapons.length; i++) {
         var category = allWeapons[i].category.split("::")[1];
+        var weaponName = allWeapons[i].displayName.toLowerCase();
 
-        if (currentCategory == "All" || currentCategory == category) {
+        if ((currentCategory == "All" || currentCategory == category) && weaponName.indexOf(searchText) != -1) {
           weapons.push(allWeapons[i]);
         }
       }
@@ -182,6 +189,10 @@
     const showWeapons = () => {
       elParent.innerHTML = '';
       elCurrentPage.innerHTML = page;
+
+      if (lastWeapon == 0) {
+        elParent.innerHTML = '<div class="col text-center text-white my-5">No weapons found.</div>';
+      }
 
       for (var i = ((page - 1) * perPage); i < page * perPage; i++) {
 
@@ -209,7 +220,7 @@
 
         elParent.innerHTML += `
           <div class="col-12 col-md-6 col-xl-4">
-              <a class="valo-card" style="background-image: linear-gradient(rgba(10, 10, 13, .45), rgba(10, 10, 13, .85)), url('images/bg` + bgNumber + `.png');" href="view.html?id=` + id + `&page=` + page + `">
+              <a class="valo-card" style="background-image: linear-gradient(rgba(10, 10, 13, .45), rgba(10, 10, 13, .85)), url('images/bg` + bgNumber + `.png');" href="view.html?id=` + id + `&page=` + page + `&category=` + currentCategory + `">
                 <div class="valo-card-top">
                   <span class="valo-card-category">` + category + `</span>
                 </div>
@@ -258,21 +269,31 @@
       showWeapons();
     }
 
+    //search function
+    function searchWeapons() {
+      searchText = inSearchInput.value.toLowerCase();
+      page = 1;
+      applyFilter();
+    }
+
     //sidebar function
     function setCategory(category) {
       currentCategory = category;
       page = 1;
 
+      markActiveLink();
+      applyFilter();
+    }
+
+    function markActiveLink() {
       var links = document.getElementsByClassName("side-link");
       for (var i = 0; i < links.length; i++) {
-        if (links[i].getAttribute("data-category") == category) {
+        if (links[i].getAttribute("data-category") == currentCategory) {
           links[i].classList.add("active");
         } else {
           links[i].classList.remove("active");
         }
       }
-
-      applyFilter();
     }
 
     getWeapons();

@@ -85,9 +85,14 @@
     const urlParams = new URLSearchParams(queryString);
     const id = urlParams.get('id');
     const page = urlParams.get('page');
+    const backCategory = urlParams.get('category');
 
     if (page != null) {
       elBacklink.href = "index.html?page=" + page;
+
+      if (backCategory != null) {
+        elBacklink.href += "&category=" + backCategory;
+      }
     }
 
     const getWeapon = async () => {

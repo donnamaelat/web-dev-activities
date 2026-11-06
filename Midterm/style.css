@@ -701,9 +701,7 @@ svg.title-icon {
   margin-left: auto;
 }
 
-.valo-nav .navbar-brand {
-  min-width: 0;
-}
+
 
 .pagination .page-item.disabled .page-link {
   opacity: .35;

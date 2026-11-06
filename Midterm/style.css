@@ -666,3 +666,32 @@ svg.title-icon {
 .valo-nav .navbar-brand {
   min-width: 320px;
 }
+
+.nav-spacer {
+  width: 320px;
+  max-width: 100%;
+}
+
+.valo-nav .navbar-brand {
+  margin-right: 0;
+}
+
+.valo-nav .container-fluid {
+  align-self: stretch;
+  align-items: stretch;
+}
+
+.valo-nav .navbar-collapse {
+  align-items: stretch;
+}
+
+.valo-nav .nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.valo-nav .navbar-toggler,
+.valo-search {
+  align-self: center;
+}

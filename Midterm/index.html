@@ -83,9 +83,9 @@
 
         <nav aria-label="Page navigation">
           <ul class="pagination justify-content-center my-4">
-            <li class="page-item"><a class="page-link" onclick="prev()">Previous</a></li>
+            <li class="page-item" id="prevItem"><a class="page-link" onclick="prev()">Previous</a></li>
             <li class="page-item"><a class="page-link" id="currentpage">1</a></li>
-            <li class="page-item"><a class="page-link" onclick="next()">Next</a></li>
+            <li class="page-item" id="nextItem"><a class="page-link" onclick="next()">Next</a></li>
           </ul>
         </nav>
       </main>
@@ -103,6 +103,8 @@
     var elCurrentPage = document.getElementById("currentpage");
     var elParent = document.getElementById("parent");
     var inSearchInput = document.getElementById("searchInput");
+    var elPrevItem = document.getElementById("prevItem");
+    var elNextItem = document.getElementById("nextItem");
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -181,6 +183,19 @@
       elParent.innerHTML = '';
       elCurrentPage.innerHTML = page;
 
+      // disable prev pag page 1, disable next pag last page na
+      if (page <= 1) {
+        elPrevItem.classList.add("disabled");
+      } else {
+        elPrevItem.classList.remove("disabled");
+      }
+
+      if (page >= finalPage) {
+        elNextItem.classList.add("disabled");
+      } else {
+        elNextItem.classList.remove("disabled");
+      }
+
       if (lastWeapon == 0) {
         elParent.innerHTML = '<div class="col text-center text-white my-5">No weapons found.</div>';
       }
@@ -245,19 +260,17 @@
 
     //pagination functions
     function prev() {
-      page -= 1;
-      if (page == 0) {
-        page = finalPage;
+      if (page > 1) {
+        page -= 1;
+        showWeapons();
       }
-      showWeapons();
     }
 
     function next() {
-      page += 1;
-      if (page > finalPage) {
-        page = 1;
+      if (page < finalPage) {
+        page += 1;
+        showWeapons();
       }
-      showWeapons();
     }
 
     //search function

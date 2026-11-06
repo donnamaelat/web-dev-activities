@@ -704,3 +704,12 @@ svg.title-icon {
 .valo-nav .navbar-brand {
   min-width: 0;
 }
+
+.pagination .page-item.disabled .page-link {
+  opacity: .35;
+  cursor: not-allowed;
+  pointer-events: none;
+  border-color: rgba(255, 255, 255, .15);
+  background: #0c0c10;
+  color: #7d7d86;
+}

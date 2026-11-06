@@ -178,9 +178,8 @@
         }
 
         elName.innerHTML = weapon.displayName;
-        elImage.src = weapon.displayIcon;
         elCategory.innerHTML = category;
-        showSkins(weapon.skins);
+        showSkins(weapon.skins, weapon.displayIcon, weapon.displayName);
 
         if (weapon.shopData != null) {
           elCost.innerHTML = weapon.shopData.cost;
@@ -235,9 +234,13 @@
       }
     };
 
-    const showSkins = (skins) => {
+    const showSkins = (skins, defaultImage, defaultName) => {
       skinNames = [];
       skinImages = [];
+
+      // default skin muna, laging nasa unahan
+      skinNames.push("Standard " + defaultName);
+      skinImages.push(defaultImage);
 
       for (var i = 0; i < skins.length; i++) {
         var skin = skins[i];
@@ -249,6 +252,11 @@
 
         if (skinImage == null && skin.levels.length > 0) {
           skinImage = skin.levels[0].displayIcon;
+        }
+
+        // i-skip ang standard skin ng API, nailagay na natin sa taas
+        if (skin.themeUuid == "5a629df4-4765-0214-bd40-fbb96542941f") {
+          continue;
         }
 
         if (skinImage == null || skin.displayName.indexOf("Random Favorite") != -1) {

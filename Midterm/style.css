@@ -664,7 +664,8 @@ svg.title-icon {
 }
 
 .valo-nav .navbar-brand {
-  min-width: 320px;
+  flex: 0 1 320px;
+  max-width: calc(100% - 64px);
 }
 
 .nav-spacer {

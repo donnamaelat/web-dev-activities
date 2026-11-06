@@ -695,3 +695,12 @@ svg.title-icon {
 .valo-search {
   align-self: center;
 }
+
+.valo-nav .navbar-toggler {
+  margin: 10px 0 12px;
+  margin-left: auto;
+}
+
+.valo-nav .navbar-brand {
+  min-width: 0;
+}

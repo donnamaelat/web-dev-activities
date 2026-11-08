@@ -1,360 +1,456 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weapon Details</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Weapon Details</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
-</head>
+  <body class="view-body">
+    <div class="valo-loading" id="loading" role="status" aria-live="polite">
+      <div class="valo-loading-box">
+        <img class="valo-loading-logo" src="images/valo icon.png" alt="" />
+        <div class="spinner-border text-danger" aria-hidden="true"></div>
+        <div class="valo-loading-text">Loading weapon</div>
 
-<body class="view-body">
-
-<div class="valo-loading" id="loading" role="status" aria-live="polite">
-  <div class="valo-loading-box">
-    <img class="valo-loading-logo" src="images/valo icon.png" alt="">
-    <div class="spinner-border text-danger" aria-hidden="true"></div>
-    <div class="valo-loading-text">Loading weapon</div>
-
-    <div class="valo-loading-error">
-      <p id="loadingMsg">Unable to load weapon.</p>
-      <button type="button" class="view-back" onclick="location.reload()">Retry</button>
-      <a href="index.html" class="view-back">Back to list</a>
-    </div>
-  </div>
-</div>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top valo-nav">
-    <div class="container-fluid px-4">
-
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img class="valo-logo me-2" src="images/valo icon.png" alt="Valorant">
-        <span class="valo-logo-text">VALORANT</span>
-      </a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#valoNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="valoNav">
-        <ul class="navbar-nav mx-lg-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Arsenal</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Agents</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Maps</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Collection</a></li>
-        </ul>
-        <div class="nav-spacer"></div>
-      </div>
-
-    </div>
-  </nav>
-
-  <div class="container valo-view">
-    <a href="index.html" id="backlink" class="view-back">&lsaquo; Back to list</a>
-
-    <div class="row align-items-center mt-4">
-      <div class="col-12 col-lg-4">
-        <img class="view-logo" src="images/valo icon.png" alt="Valorant">
-        <div class="view-category" id="category"></div>
-        <div class="view-name" id="name"></div>
-        <div class="view-cost" id="cost"></div>
-      </div>
-      <div class="col-12 col-lg-8 text-center">
-        <img src="" class="img-fluid view-weapon" id="image">
-        <div class="skin-current" id="skinName"></div>
-      </div>
-    </div>
-
-    <div class="row mt-4 mb-5 align-items-center">
-      <div class="col-12 col-lg-5 mb-3">
-        <div class="view-panel">
-          <div class="view-panel-title"><img class="title-icon" src="images/valo icon.png" alt="">Overview</div>
-          <div id="stats"></div>
+        <div class="valo-loading-error">
+          <p id="loadingMsg">Unable to load weapon.</p>
+          <button type="button" class="view-back" onclick="location.reload()">
+            Retry
+          </button>
+          <a href="index.html" class="view-back">Back to list</a>
         </div>
       </div>
-      <div class="col-12 col-lg-7 mb-3">
-        <div class="view-panel h-auto">
-          <div class="view-panel-title">
-            <svg class="title-icon" width="24" height="24" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="8" />
-              <circle cx="12" cy="12" r="2" />
-              <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
-            </svg>Damage by distance
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top valo-nav">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img
+            class="valo-logo me-2"
+            src="images/valo icon.png"
+            alt="Valorant"
+          />
+          <span class="valo-logo-text">VALORANT</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#valoNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="valoNav">
+          <ul class="navbar-nav mx-lg-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Arsenal</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Agents</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Maps</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Collection</a>
+            </li>
+          </ul>
+          <div class="nav-spacer"></div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container valo-view">
+      <a href="index.html" id="backlink" class="view-back"
+        >&lsaquo; Back to list</a
+      >
+
+      <div class="row align-items-center mt-4">
+        <div class="col-12 col-lg-4">
+          <img class="view-logo" src="images/valo icon.png" alt="Valorant" />
+          <div class="view-category" id="category"></div>
+          <div class="view-name" id="name"></div>
+          <div class="view-cost" id="cost"></div>
+        </div>
+        <div class="col-12 col-lg-8 text-center">
+          <img src="" class="img-fluid view-weapon" id="image" />
+          <div class="skin-current" id="skinName"></div>
+        </div>
+      </div>
+
+      <div class="row mt-4 mb-5 align-items-center">
+        <div class="col-12 col-lg-5 mb-3">
+          <div class="view-panel">
+            <div class="view-panel-title">
+              <img
+                class="title-icon"
+                src="images/valo icon.png"
+                alt=""
+              />Overview
+            </div>
+            <div id="stats"></div>
           </div>
-          <div class="table-responsive" id="damage"></div>
         </div>
-      </div>
-    </div>
-
-    <div class="row mb-5">
-      <div class="col-12">
-        <div class="view-panel">
-          <div class="view-panel-title d-flex justify-content-between">
-            <span>Skins</span>
-            <span class="skin-count" id="skinCount"></span>
+        <div class="col-12 col-lg-7 mb-3">
+          <div class="view-panel h-auto">
+            <div class="view-panel-title">
+              <svg
+                class="title-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="12" r="8" />
+                <circle cx="12" cy="12" r="2" />
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4" /></svg
+              >Damage by distance
+            </div>
+            <div class="table-responsive" id="damage"></div>
           </div>
-          <div class="skin-grid" id="skins"></div>
         </div>
       </div>
+
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="view-panel">
+            <div class="view-panel-title d-flex justify-content-between">
+              <span>Skins</span>
+              <span class="skin-count" id="skinCount"></span>
+            </div>
+            <div class="skin-grid" id="skins"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-footer">Defy the limits</div>
     </div>
 
-    <div class="view-footer">Defy the limits</div>
-  </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    <script>
+      const icons = {
+        magazine:
+          '<path d="M5 21v-9l2-3 2 3v9zM11 21v-9l2-3 2 3v9zM17 21v-9l2-3 2 3v9z"/>',
+        fireRate: '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+        reload: '<path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/>',
+        equip: '<circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/>',
+        wall: '<rect x="3" y="4" width="18" height="16"/><path d="M3 9.3h18M3 14.7h18M9 4v5.3M15 9.3v5.4M9 14.7V20"/>',
+      };
 
-  <script>
-
-    const icons = {
-      magazine: '<path d="M5 21v-9l2-3 2 3v9zM11 21v-9l2-3 2 3v9zM17 21v-9l2-3 2 3v9z"/>',
-      fireRate: '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
-      reload: '<path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/>',
-      equip: '<circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/>',
-      wall: '<rect x="3" y="4" width="18" height="16"/><path d="M3 9.3h18M3 14.7h18M9 4v5.3M15 9.3v5.4M9 14.7V20"/>'
-    };
-
-    function statRow(icon, label, value, unit) {
-      return `
+      function statRow(icon, label, value, unit) {
+        return (
+          `
         <div class="stat-row">
-          <svg class="stat-icon" viewBox="0 0 24 24">` + icon + `</svg>
-          <span class="row-label">` + label + `</span>
-          <span class="row-value"><b>` + value + `</b> ` + unit + `</span>
+          <svg class="stat-icon" viewBox="0 0 24 24">` +
+          icon +
+          `</svg>
+          <span class="row-label">` +
+          label +
+          `</span>
+          <span class="row-value"><b>` +
+          value +
+          `</b> ` +
+          unit +
+          `</span>
         </div>
-      `;
-    }
-
-    var elName = document.getElementById("name");
-    var elImage = document.getElementById("image");
-    var elCategory = document.getElementById("category");
-    var elBacklink = document.getElementById("backlink");
-    var elStats = document.getElementById("stats");
-    var elDamage = document.getElementById("damage");
-    var elCost = document.getElementById("cost");
-    var elSkins = document.getElementById("skins");
-    var elSkinName = document.getElementById("skinName");
-    var elSkinCount = document.getElementById("skinCount");
-    var elLoading = document.getElementById("loading");
-
-    var loadFailed = false;
-
-// resolves when the image finishes (or fails) - no timers
-function waitForImage(src) {
-  return new Promise(function (resolve) {
-    if (!src) {
-      resolve();
-      return;
-    }
-    var img = new Image();
-    img.onload = resolve;
-    img.onerror = resolve;
-    img.src = src;
-  });
-}
-
-function hideLoading() {
-  elLoading.classList.add("is-hidden");
-}
-
-function showLoadingError(message) {
-  document.getElementById("loadingMsg").innerHTML = message;
-  elLoading.classList.add("has-error");
-}
-
-    var skinNames = [];
-    var skinImages = [];
-
-    var bgNumber = Math.floor(Math.random() * 6) + 1;
-    document.body.style.setProperty("--view-bg", "url('images/bg" + bgNumber + ".png')");
-
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const id = urlParams.get('id');
-    const page = urlParams.get('page');
-    const backCategory = urlParams.get('category');
-
-    if (page != null) {
-      elBacklink.href = "index.html?page=" + page;
-
-      if (backCategory != null) {
-        elBacklink.href += "&category=" + backCategory;
+      `
+        );
       }
-    }
 
-    const getWeapon = async () => {
-      try {
-        elName.innerHTML = "";
-        elImage.src = "";
-        elCategory.innerHTML = "";
+      var elName = document.getElementById("name");
+      var elImage = document.getElementById("image");
+      var elCategory = document.getElementById("category");
+      var elBacklink = document.getElementById("backlink");
+      var elStats = document.getElementById("stats");
+      var elDamage = document.getElementById("damage");
+      var elCost = document.getElementById("cost");
+      var elSkins = document.getElementById("skins");
+      var elSkinName = document.getElementById("skinName");
+      var elSkinCount = document.getElementById("skinCount");
+      var elLoading = document.getElementById("loading");
 
-        const response = await fetch('https://valorant-api.com/v1/weapons/' + id);
+      var loadFailed = false;
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch weapon data.");
+      // resolves when the image finishes (or fails) - no timers
+      function waitForImage(src) {
+        return new Promise(function (resolve) {
+          if (!src) {
+            resolve();
+            return;
+          }
+          var img = new Image();
+          img.onload = resolve;
+          img.onerror = resolve;
+          img.src = src;
+        });
+      }
+
+      function hideLoading() {
+        elLoading.classList.add("is-hidden");
+      }
+
+      function showLoadingError(message) {
+        document.getElementById("loadingMsg").innerHTML = message;
+        elLoading.classList.add("has-error");
+      }
+
+      var skinNames = [];
+      var skinImages = [];
+
+      var bgNumber = Math.floor(Math.random() * 6) + 1;
+      document.body.style.setProperty(
+        "--view-bg",
+        "url('images/bg" + bgNumber + ".png')",
+      );
+
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const id = urlParams.get("id");
+      const page = urlParams.get("page");
+      const backCategory = urlParams.get("category");
+
+      if (page != null) {
+        elBacklink.href = "index.html?page=" + page;
+
+        if (backCategory != null) {
+          elBacklink.href += "&category=" + backCategory;
         }
+      }
 
-        const result = await response.json();
-        const weapon = result.data;
+      const getWeapon = async () => {
+        try {
+          elName.innerHTML = "";
+          elImage.src = "";
+          elCategory.innerHTML = "";
 
-        if (!weapon) {
-          throw new Error("Weapon not found.");
-        }
+          const response = await fetch(
+            "https://valorant-api.com/v1/weapons/" + id,
+          );
 
-        var category = weapon.category.split("::")[1];
+          if (!response.ok) {
+            throw new Error("Failed to fetch weapon data.");
+          }
 
-        if (category == "Heavy") {
-          category = "Machine Gun";
-        }
+          const result = await response.json();
+          const weapon = result.data;
 
-        elName.innerHTML = weapon.displayName;
-        elCategory.innerHTML = category;
-        showSkins(weapon.skins, weapon.displayIcon, weapon.displayName);
+          if (!weapon) {
+            throw new Error("Weapon not found.");
+          }
 
-        // keep the loading screen up until the main image and background are ready
-await Promise.all([
-  waitForImage(skinImages[0]),
-  waitForImage("images/bg" + bgNumber + ".png")
-]);
+          var category = weapon.category.split("::")[1];
 
-        if (weapon.shopData != null) {
-          elCost.innerHTML = weapon.shopData.cost;
-        }
+          if (category == "Heavy") {
+            category = "Machine Gun";
+          }
 
-        if (weapon.weaponStats == null) {
-          elStats.innerHTML = '<div class="p-4 text-center stat-none">No stats available for this weapon.</div>';
-          elDamage.innerHTML = "";
-          return;
-        }
+          elName.innerHTML = weapon.displayName;
+          elCategory.innerHTML = category;
+          showSkins(weapon.skins, weapon.displayIcon, weapon.displayName);
 
-        var stats = weapon.weaponStats;
+          // keep the loading screen up until the main image and background are ready
+          await Promise.all([
+            waitForImage(skinImages[0]),
+            waitForImage("images/bg" + bgNumber + ".png"),
+          ]);
 
-        elStats.innerHTML =
-          statRow(icons.magazine, "Magazine capacity", stats.magazineSize, "rounds") +
-          statRow(icons.fireRate, "Fire rate", stats.fireRate, "rds/sec") +
-          statRow(icons.reload, "Reload duration", stats.reloadTimeSeconds, "sec") +
-          statRow(icons.equip, "Equip duration", stats.equipTimeSeconds, "sec") +
-          statRow(icons.wall, "Wall penetration", stats.wallPenetration.split("::")[1], "");
+          if (weapon.shopData != null) {
+            elCost.innerHTML = weapon.shopData.cost;
+          }
 
-        var rows = '';
+          if (weapon.weaponStats == null) {
+            elStats.innerHTML =
+              '<div class="p-4 text-center stat-none">No stats available for this weapon.</div>';
+            elDamage.innerHTML = "";
+            return;
+          }
 
-        for (var i = 0; i < stats.damageRanges.length; i++) {
-          var d = stats.damageRanges[i];
+          var stats = weapon.weaponStats;
 
-          rows += `
+          elStats.innerHTML =
+            statRow(
+              icons.magazine,
+              "Magazine capacity",
+              stats.magazineSize,
+              "rounds",
+            ) +
+            statRow(icons.fireRate, "Fire rate", stats.fireRate, "rds/sec") +
+            statRow(
+              icons.reload,
+              "Reload duration",
+              stats.reloadTimeSeconds,
+              "sec",
+            ) +
+            statRow(
+              icons.equip,
+              "Equip duration",
+              stats.equipTimeSeconds,
+              "sec",
+            ) +
+            statRow(
+              icons.wall,
+              "Wall penetration",
+              stats.wallPenetration.split("::")[1],
+              "",
+            );
+
+          var rows = "";
+
+          for (var i = 0; i < stats.damageRanges.length; i++) {
+            var d = stats.damageRanges[i];
+
+            rows +=
+              `
             <tr>
-              <td>` + d.rangeStartMeters + ` &ndash; ` + d.rangeEndMeters + ` m</td>
-              <td>` + Math.round(d.headDamage * 100) / 100 + `</td>
-              <td>` + Math.round(d.bodyDamage * 100) / 100 + `</td>
-              <td>` + Math.round(d.legDamage * 100) / 100 + `</td>
+              <td>` +
+              d.rangeStartMeters +
+              ` &ndash; ` +
+              d.rangeEndMeters +
+              ` m</td>
+              <td>` +
+              Math.round(d.headDamage * 100) / 100 +
+              `</td>
+              <td>` +
+              Math.round(d.bodyDamage * 100) / 100 +
+              `</td>
+              <td>` +
+              Math.round(d.legDamage * 100) / 100 +
+              `</td>
             </tr>
           `;
-        }
+          }
 
-        elDamage.innerHTML = `
+          elDamage.innerHTML =
+            `
           <table class="table valo-table text-center">
             <thead>
               <tr><th>Range</th><th>Head</th><th>Body</th><th>Legs</th></tr>
             </thead>
-            <tbody>` + rows + `</tbody>
+            <tbody>` +
+            rows +
+            `</tbody>
           </table>
         `;
+        } catch (error) {
+          console.error("Error loading weapon:", error);
+          elName.innerHTML = "Unable to load weapon.";
+          elStats.innerHTML =
+            '<div class="p-4 text-center stat-none">Unable to load weapon data.</div>';
+          loadFailed = true;
+          showLoadingError(
+            "Unable to load weapon. Check your connection and try again.",
+          );
+        } finally {
+          if (!loadFailed) {
+            hideLoading();
+          }
+        }
+      };
 
-      } catch (error) {
-  console.error("Error loading weapon:", error);
-  elName.innerHTML = "Unable to load weapon.";
-  elStats.innerHTML = '<div class="p-4 text-center stat-none">Unable to load weapon data.</div>';
-  loadFailed = true;
-  showLoadingError("Unable to load weapon. Check your connection and try again.");
+      const showSkins = (skins, defaultImage, defaultName) => {
+        skinNames = [];
+        skinImages = [];
 
-} finally {
-  if (!loadFailed) {
-    hideLoading();
-  }
-}
-    };
+        // default skin muna, laging nasa unahan
+        skinNames.push("Standard " + defaultName);
+        skinImages.push(defaultImage);
 
-    const showSkins = (skins, defaultImage, defaultName) => {
-      skinNames = [];
-      skinImages = [];
+        for (var i = 0; i < skins.length; i++) {
+          var skin = skins[i];
+          var skinImage = skin.displayIcon;
 
-      // default skin muna, laging nasa unahan
-      skinNames.push("Standard " + defaultName);
-      skinImages.push(defaultImage);
+          if (skinImage == null && skin.chromas.length > 0) {
+            skinImage = skin.chromas[0].fullRender;
+          }
 
-      for (var i = 0; i < skins.length; i++) {
-        var skin = skins[i];
-        var skinImage = skin.displayIcon;
+          if (skinImage == null && skin.levels.length > 0) {
+            skinImage = skin.levels[0].displayIcon;
+          }
 
-        if (skinImage == null && skin.chromas.length > 0) {
-          skinImage = skin.chromas[0].fullRender;
+          // i-skip ang standard skin ng API, nailagay na natin sa taas
+          if (skin.themeUuid == "5a629df4-4765-0214-bd40-fbb96542941f") {
+            continue;
+          }
+
+          if (
+            skinImage == null ||
+            skin.displayName.indexOf("Random Favorite") != -1
+          ) {
+            continue;
+          }
+
+          skinNames.push(skin.displayName);
+          skinImages.push(skinImage);
         }
 
-        if (skinImage == null && skin.levels.length > 0) {
-          skinImage = skin.levels[0].displayIcon;
+        elSkinCount.innerHTML = skinNames.length + " skins";
+
+        if (skinNames.length == 0) {
+          elSkins.innerHTML =
+            '<div class="p-4 text-center stat-none">No skins available for this weapon.</div>';
+          return;
         }
 
-        // i-skip ang standard skin ng API, nailagay na natin sa taas
-        if (skin.themeUuid == "5a629df4-4765-0214-bd40-fbb96542941f") {
-          continue;
-        }
+        var cards = "";
 
-        if (skinImage == null || skin.displayName.indexOf("Random Favorite") != -1) {
-          continue;
-        }
-
-        skinNames.push(skin.displayName);
-        skinImages.push(skinImage);
-      }
-
-      elSkinCount.innerHTML = skinNames.length + " skins";
-
-      if (skinNames.length == 0) {
-        elSkins.innerHTML = '<div class="p-4 text-center stat-none">No skins available for this weapon.</div>';
-        return;
-      }
-
-      var cards = '';
-
-      for (var i = 0; i < skinNames.length; i++) {
-        cards += `
-          <div class="skin-card" onclick="selectSkin(` + i + `)">
+        for (var i = 0; i < skinNames.length; i++) {
+          cards +=
+            `
+          <div class="skin-card" onclick="selectSkin(` +
+            i +
+            `)">
             <div class="skin-card-image">
-<img src="` + skinImages[i] + `" alt="` + skinNames[i] + `" loading="lazy" width="300" height="200" style="aspect-ratio: 3 / 2; object-fit: contain;">
+<img src="` +
+            skinImages[i] +
+            `" alt="` +
+            skinNames[i] +
+            `" loading="lazy" width="300" height="200" style="aspect-ratio: 3 / 2; object-fit: contain;">
               </div>
-            <div class="skin-card-name">` + skinNames[i] + `</div>
+            <div class="skin-card-name">` +
+            skinNames[i] +
+            `</div>
           </div>
         `;
-      }
+        }
 
-      elSkins.innerHTML = cards;
-      selectSkin(0);
-    };
+        elSkins.innerHTML = cards;
+        selectSkin(0);
+      };
 
-    function selectSkin(index) {
-      elImage.src = skinImages[index];
-      elSkinName.innerHTML = skinNames[index];
+      function selectSkin(index) {
+        elImage.src = skinImages[index];
+        elSkinName.innerHTML = skinNames[index];
 
-      var cards = document.getElementsByClassName("skin-card");
+        var cards = document.getElementsByClassName("skin-card");
 
-      for (var i = 0; i < cards.length; i++) {
-        if (i == index) {
-          cards[i].classList.add("active");
-        } else {
-          cards[i].classList.remove("active");
+        for (var i = 0; i < cards.length; i++) {
+          if (i == index) {
+            cards[i].classList.add("active");
+          } else {
+            cards[i].classList.remove("active");
+          }
         }
       }
-    }
 
-    if (id != null) {
-      getWeapon();
-    } else {
-  elName.innerHTML = "Weapon not found.";
-  showLoadingError("Weapon not found.");
-}
-  </script>
-</body>
-
+      if (id != null) {
+        getWeapon();
+      } else {
+        elName.innerHTML = "Weapon not found.";
+        showLoadingError("Weapon not found.");
+      }
+    </script>
+  </body>
 </html>

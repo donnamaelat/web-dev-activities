@@ -1,134 +1,234 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Valorant Weapons</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Valorant Weapons</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
-</head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top valo-nav">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img
+            class="valo-logo me-2"
+            src="images/valo icon.png"
+            alt="Valorant"
+          />
+          <span class="valo-logo-text">VALORANT</span>
+        </a>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top valo-nav">
-    <div class="container-fluid px-4">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#valoNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img class="valo-logo me-2" src="images/valo icon.png" alt="Valorant">
-        <span class="valo-logo-text">VALORANT</span>
-      </a>
+        <div class="collapse navbar-collapse" id="valoNav">
+          <ul class="navbar-nav mx-lg-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Arsenal</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Agents</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Maps</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Collection</a>
+            </li>
+          </ul>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#valoNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="valoNav">
-        <ul class="navbar-nav mx-lg-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Arsenal</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Agents</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Maps</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Collection</a></li>
-        </ul>
-
-        <form class="valo-search d-flex align-items-center my-2 my-lg-0" onsubmit="searchWeapons(); return false">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a9aa3" stroke-width="2">
-            <circle cx="11" cy="11" r="7" />
-            <path d="M21 21l-4.3-4.3" />
-          </svg>
-          <input type="text" id="searchInput" placeholder="Search for a weapon..." onkeyup="searchWeapons()">
-        </form>
+          <form
+            class="valo-search d-flex align-items-center my-2 my-lg-0"
+            onsubmit="
+              searchWeapons();
+              return false;
+            "
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#9a9aa3"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search for a weapon..."
+              onkeyup="searchWeapons()"
+            />
+          </form>
+        </div>
       </div>
+    </nav>
 
-    </div>
-  </nav>
-
-  <div class="container-fluid valo-layout">
-    <div class="row">
-
-      <aside class="col-lg-2 d-none d-lg-block">
-        <div class="valo-sidebar">
-          <ul class="list-unstyled mb-0">
-            <li><a class="side-link active" data-category="All" onclick="setCategory('All')">
-                <svg class="side-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z" />
-                </svg>All</a></li>
-            <li><a class="side-link" data-category="Sidearm" data-icon="Classic" onclick="setCategory('Sidearm')"><img
-                  class="side-icon" alt="">Sidearms</a></li>
-            <li><a class="side-link" data-category="SMG" data-icon="Stinger" onclick="setCategory('SMG')"><img
-                  class="side-icon" alt="">SMGs</a></li>
-            <li><a class="side-link" data-category="Rifle" data-icon="Vandal" onclick="setCategory('Rifle')"><img
-                  class="side-icon" alt="">Rifles</a></li>
-            <li><a class="side-link" data-category="Sniper" data-icon="Operator" onclick="setCategory('Sniper')"><img
-                  class="side-icon" alt="">Snipers</a></li>
-            <li><a class="side-link" data-category="Shotgun" data-icon="Bucky" onclick="setCategory('Shotgun')"><img
-                  class="side-icon" alt="">Shotguns</a></li>
-            <li><a class="side-link" data-category="Heavy" data-icon="Odin" onclick="setCategory('Heavy')"><img
-                  class="side-icon" alt="">Machine Guns</a></li>
-            <li><a class="side-link" data-category="Melee" data-icon="Melee" onclick="setCategory('Melee')"><img
-                  class="side-icon" alt="">Melee</a></li>
-          </ul>
-          <div class="valo-side-bottom">
-            <img class="valo-side-logo" src="images/valo icon.png" alt="Valorant">
-            <div class="valo-tagline">DEFY<br>THE<br>LIMITS</div>
+    <div class="container-fluid valo-layout">
+      <div class="row">
+        <aside class="col-lg-2 d-none d-lg-block">
+          <div class="valo-sidebar">
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a
+                  class="side-link active"
+                  data-category="All"
+                  onclick="setCategory('All')"
+                >
+                  <svg class="side-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"
+                    /></svg
+                  >All</a
+                >
+              </li>
+              <li>
+                <a
+                  class="side-link"
+                  data-category="Sidearm"
+                  data-icon="Classic"
+                  onclick="setCategory('Sidearm')"
+                  ><img class="side-icon" alt="" />Sidearms</a
+                >
+              </li>
+              <li>
+                <a
+                  class="side-link"
+                  data-category="SMG"
+                  data-icon="Stinger"
+                  onclick="setCategory('SMG')"
+                  ><img class="side-icon" alt="" />SMGs</a
+                >
+              </li>
+              <li>
+                <a
+                  class="side-link"
+                  data-category="Rifle"
+                  data-icon="Vandal"
+                  onclick="setCategory('Rifle')"
+                  ><img class="side-icon" alt="" />Rifles</a
+                >
+              </li>
+              <li>
+                <a
+                  class="side-link"
+                  data-category="Sniper"
+                  data-icon="Operator"
+                  onclick="setCategory('Sniper')"
+                  ><img class="side-icon" alt="" />Snipers</a
+                >
+              </li>
+              <li>
+                <a
+                  class="side-link"
+                  data-category="Shotgun"
+                  data-icon="Bucky"
+                  onclick="setCategory('Shotgun')"
+                  ><img class="side-icon" alt="" />Shotguns</a
+                >
+              </li>
+              <li>
+                <a
+                  class="side-link"
+                  data-category="Heavy"
+                  data-icon="Odin"
+                  onclick="setCategory('Heavy')"
+                  ><img class="side-icon" alt="" />Machine Guns</a
+                >
+              </li>
+              <li>
+                <a
+                  class="side-link"
+                  data-category="Melee"
+                  data-icon="Melee"
+                  onclick="setCategory('Melee')"
+                  ><img class="side-icon" alt="" />Melee</a
+                >
+              </li>
+            </ul>
+            <div class="valo-side-bottom">
+              <img
+                class="valo-side-logo"
+                src="images/valo icon.png"
+                alt="Valorant"
+              />
+              <div class="valo-tagline">DEFY<br />THE<br />LIMITS</div>
+            </div>
           </div>
-        </div>
-      </aside>
+        </aside>
 
-      <main class="col-12 col-lg-10">
-        <div class="row" id="parent">
+        <main class="col-12 col-lg-10">
+          <div class="row" id="parent"></div>
 
-        </div>
-
-        <nav aria-label="Page navigation">
-          <ul class="pagination justify-content-center my-4">
-            <li class="page-item" id="prevItem"><a class="page-link" onclick="prev()">Previous</a></li>
-            <li class="page-item"><a class="page-link" id="currentpage">1</a></li>
-            <li class="page-item" id="nextItem"><a class="page-link" onclick="next()">Next</a></li>
-          </ul>
-        </nav>
-      </main>
-
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center my-4">
+              <li class="page-item" id="prevItem">
+                <a class="page-link" onclick="prev()">Previous</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" id="currentpage">1</a>
+              </li>
+              <li class="page-item" id="nextItem">
+                <a class="page-link" onclick="next()">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </main>
+      </div>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
-  <script>
+    <script>
+      // element initializations
+      var elCurrentPage = document.getElementById("currentpage");
+      var elParent = document.getElementById("parent");
+      var inSearchInput = document.getElementById("searchInput");
+      var elPrevItem = document.getElementById("prevItem");
+      var elNextItem = document.getElementById("nextItem");
 
-    // element initializations
-    var elCurrentPage = document.getElementById("currentpage");
-    var elParent = document.getElementById("parent");
-    var inSearchInput = document.getElementById("searchInput");
-    var elPrevItem = document.getElementById("prevItem");
-    var elNextItem = document.getElementById("nextItem");
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      var page = urlParams.get("page");
+      if (page == null) {
+        page = 1;
+      } else {
+        page = parseInt(page);
+      }
 
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    var page = urlParams.get('page');
-    if (page == null) {
-      page = 1;
-    } else {
-      page = parseInt(page);
-    }
+      //pagination variables
+      var allWeapons = [];
+      var weapons = [];
+      var currentCategory = urlParams.get("category");
+      if (currentCategory == null) {
+        currentCategory = "All";
+      }
+      var lastWeapon = 0;
+      var perPage = 8;
+      var finalPage = 1;
+      var searchText = "";
 
-    //pagination variables
-    var allWeapons = [];
-    var weapons = [];
-    var currentCategory = urlParams.get('category');
-    if (currentCategory == null) {
-      currentCategory = "All";
-    }
-    var lastWeapon = 0;
-    var perPage = 8;
-    var finalPage = 1;
-    var searchText = "";
-
-    const getWeapons = async () => {
-      elParent.innerHTML = `
+      const getWeapons = async () => {
+        elParent.innerHTML = `
         <div class="col text-center my-5">
           <div class="spinner-border text-danger" role="status">
             <span class="visually-hidden">Loading...</span>
@@ -136,172 +236,196 @@
         </div>
       `;
 
-      const response = await fetch('https://valorant-api.com/v1/weapons');
-      const result = await response.json();
-      allWeapons = result.data;
+        const response = await fetch("https://valorant-api.com/v1/weapons");
+        const result = await response.json();
+        allWeapons = result.data;
 
-      showIcons();
-      markActiveLink();
-      applyFilter();
-    }
+        showIcons();
+        markActiveLink();
+        applyFilter();
+      };
 
-    const showIcons = () => {
-      var links = document.getElementsByClassName("side-link");
+      const showIcons = () => {
+        var links = document.getElementsByClassName("side-link");
 
-      for (var i = 0; i < links.length; i++) {
-        var iconName = links[i].getAttribute("data-icon");
+        for (var i = 0; i < links.length; i++) {
+          var iconName = links[i].getAttribute("data-icon");
 
-        if (iconName != null) {
-          for (var j = 0; j < allWeapons.length; j++) {
-            if (allWeapons[j].displayName == iconName) {
-              links[i].getElementsByTagName("img")[0].src = allWeapons[j].displayIcon;
+          if (iconName != null) {
+            for (var j = 0; j < allWeapons.length; j++) {
+              if (allWeapons[j].displayName == iconName) {
+                links[i].getElementsByTagName("img")[0].src =
+                  allWeapons[j].displayIcon;
+              }
             }
           }
         }
-      }
-    }
+      };
 
-    const applyFilter = () => {
-      weapons = [];
+      const applyFilter = () => {
+        weapons = [];
 
-      for (var i = 0; i < allWeapons.length; i++) {
-        var category = allWeapons[i].category.split("::")[1];
-        var weaponName = allWeapons[i].displayName.toLowerCase();
+        for (var i = 0; i < allWeapons.length; i++) {
+          var category = allWeapons[i].category.split("::")[1];
+          var weaponName = allWeapons[i].displayName.toLowerCase();
 
-        if ((currentCategory == "All" || currentCategory == category) && weaponName.indexOf(searchText) != -1) {
-          weapons.push(allWeapons[i]);
-        }
-      }
-
-      lastWeapon = weapons.length;
-      finalPage = Math.ceil(lastWeapon / perPage);
-
-      showWeapons();
-    }
-
-    const showWeapons = () => {
-      elParent.innerHTML = '';
-      elCurrentPage.innerHTML = page;
-
-      // disable prev pag page 1, disable next pag last page na
-      if (page <= 1) {
-        elPrevItem.classList.add("disabled");
-      } else {
-        elPrevItem.classList.remove("disabled");
-      }
-
-      if (page >= finalPage) {
-        elNextItem.classList.add("disabled");
-      } else {
-        elNextItem.classList.remove("disabled");
-      }
-
-      if (lastWeapon == 0) {
-        elParent.innerHTML = '<div class="col text-center text-white my-5">No weapons found.</div>';
-      }
-
-      for (var i = ((page - 1) * perPage); i < page * perPage; i++) {
-
-        if (i >= lastWeapon) {
-          break;
+          if (
+            (currentCategory == "All" || currentCategory == category) &&
+            weaponName.indexOf(searchText) != -1
+          ) {
+            weapons.push(allWeapons[i]);
+          }
         }
 
-        var weapon = weapons[i];
+        lastWeapon = weapons.length;
+        finalPage = Math.ceil(lastWeapon / perPage);
 
-        var id = weapon.uuid;
-        var name = weapon.displayName;
-        var image = weapon.displayIcon;
-        var category = weapon.category.split("::")[1];
+        showWeapons();
+      };
 
-        var bgNumber = (i % 6) + 1;
-        var damage = "-";
-        var magazine = "-";
-        var fireRate = "-";
+      const showWeapons = () => {
+        elParent.innerHTML = "";
+        elCurrentPage.innerHTML = page;
 
-        if (weapon.weaponStats != null) {
-          damage = weapon.weaponStats.damageRanges[0].bodyDamage;
-          magazine = weapon.weaponStats.magazineSize;
-          fireRate = weapon.weaponStats.fireRate;
+        // disable prev pag page 1, disable next pag last page na
+        if (page <= 1) {
+          elPrevItem.classList.add("disabled");
+        } else {
+          elPrevItem.classList.remove("disabled");
         }
 
-        elParent.innerHTML += `
+        if (page >= finalPage) {
+          elNextItem.classList.add("disabled");
+        } else {
+          elNextItem.classList.remove("disabled");
+        }
+
+        if (lastWeapon == 0) {
+          elParent.innerHTML =
+            '<div class="col text-center text-white my-5">No weapons found.</div>';
+        }
+
+        for (var i = (page - 1) * perPage; i < page * perPage; i++) {
+          if (i >= lastWeapon) {
+            break;
+          }
+
+          var weapon = weapons[i];
+
+          var id = weapon.uuid;
+          var name = weapon.displayName;
+          var image = weapon.displayIcon;
+          var category = weapon.category.split("::")[1];
+
+          var bgNumber = (i % 6) + 1;
+          var damage = "-";
+          var magazine = "-";
+          var fireRate = "-";
+
+          if (weapon.weaponStats != null) {
+            damage = weapon.weaponStats.damageRanges[0].bodyDamage;
+            magazine = weapon.weaponStats.magazineSize;
+            fireRate = weapon.weaponStats.fireRate;
+          }
+
+          elParent.innerHTML +=
+            `
           <div class="col-12 col-md-6 col-xl-4">
-              <a class="valo-card" style="background-image: linear-gradient(rgba(10, 10, 13, .45), rgba(10, 10, 13, .85)), url('images/bg` + bgNumber + `.png');" href="view.html?id=` + id + `&page=` + page + `&category=` + currentCategory + `">
+              <a class="valo-card" style="background-image: linear-gradient(rgba(10, 10, 13, .45), rgba(10, 10, 13, .85)), url('images/bg` +
+            bgNumber +
+            `.png');" href="view.html?id=` +
+            id +
+            `&page=` +
+            page +
+            `&category=` +
+            currentCategory +
+            `">
                 <div class="valo-card-top">
-                  <span class="valo-card-category">` + category + `</span>
+                  <span class="valo-card-category">` +
+            category +
+            `</span>
                 </div>
               <div class="valo-card-image">
-                <img src="` + image + `">
+                <img src="` +
+            image +
+            `">
               </div>
               <div class="valo-card-name">
-                ` + name + `
+                ` +
+            name +
+            `
                 <img src="images/valo icon.png" alt="">
               </div>
               <div class="valo-card-stats">
                 <div>
                   <div class="stat-label">Damage</div>
-                  <div class="stat-value">` + damage + `</div>
+                  <div class="stat-value">` +
+            damage +
+            `</div>
                 </div>
                 <div>
                   <div class="stat-label">Magazine</div>
-                  <div class="stat-value">` + magazine + `</div>
+                  <div class="stat-value">` +
+            magazine +
+            `</div>
                 </div>
                 <div>
                   <div class="stat-label">Fire rate</div>
-                  <div class="stat-value">` + fireRate + `</div>
+                  <div class="stat-value">` +
+            fireRate +
+            `</div>
                 </div>
               </div>
               <div class="valo-card-view">&raquo; View details</div>
             </a>
           </div>
         `;
-      }
-    }
+        }
+      };
 
-    //pagination functions
-    function prev() {
-      if (page > 1) {
-        page -= 1;
-        showWeapons();
-      }
-    }
-
-    function next() {
-      if (page < finalPage) {
-        page += 1;
-        showWeapons();
-      }
-    }
-
-    //search function
-    function searchWeapons() {
-      searchText = inSearchInput.value.toLowerCase();
-      page = 1;
-      applyFilter();
-    }
-
-    //sidebar function
-    function setCategory(category) {
-      currentCategory = category;
-      page = 1;
-
-      markActiveLink();
-      applyFilter();
-    }
-
-    function markActiveLink() {
-      var links = document.getElementsByClassName("side-link");
-      for (var i = 0; i < links.length; i++) {
-        if (links[i].getAttribute("data-category") == currentCategory) {
-          links[i].classList.add("active");
-        } else {
-          links[i].classList.remove("active");
+      //pagination functions
+      function prev() {
+        if (page > 1) {
+          page -= 1;
+          showWeapons();
         }
       }
-    }
 
-    getWeapons();
-  </script>
-</body>
+      function next() {
+        if (page < finalPage) {
+          page += 1;
+          showWeapons();
+        }
+      }
 
+      //search function
+      function searchWeapons() {
+        searchText = inSearchInput.value.toLowerCase();
+        page = 1;
+        applyFilter();
+      }
+
+      //sidebar function
+      function setCategory(category) {
+        currentCategory = category;
+        page = 1;
+
+        markActiveLink();
+        applyFilter();
+      }
+
+      function markActiveLink() {
+        var links = document.getElementsByClassName("side-link");
+        for (var i = 0; i < links.length; i++) {
+          if (links[i].getAttribute("data-category") == currentCategory) {
+            links[i].classList.add("active");
+          } else {
+            links[i].classList.remove("active");
+          }
+        }
+      }
+
+      getWeapons();
+    </script>
+  </body>
 </html>

@@ -13,12 +13,19 @@
 
 <body class="view-body">
 
-  <div class="valo-loading" id="loading">
-    <div class="spinner-border text-danger" role="status">
-      <span class="visually-hidden">Loading...</span>
+<div class="valo-loading" id="loading" role="status" aria-live="polite">
+  <div class="valo-loading-box">
+    <img class="valo-loading-logo" src="images/valo icon.png" alt="">
+    <div class="spinner-border text-danger" aria-hidden="true"></div>
+    <div class="valo-loading-text">Loading weapon</div>
+
+    <div class="valo-loading-error">
+      <p id="loadingMsg">Unable to load weapon.</p>
+      <button type="button" class="view-back" onclick="location.reload()">Retry</button>
+      <a href="index.html" class="view-back">Back to list</a>
     </div>
   </div>
-
+</div>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top valo-nav">
     <div class="container-fluid px-4">
 
@@ -132,6 +139,31 @@
     var elSkinCount = document.getElementById("skinCount");
     var elLoading = document.getElementById("loading");
 
+    var loadFailed = false;
+
+// resolves when the image finishes (or fails) - no timers
+function waitForImage(src) {
+  return new Promise(function (resolve) {
+    if (!src) {
+      resolve();
+      return;
+    }
+    var img = new Image();
+    img.onload = resolve;
+    img.onerror = resolve;
+    img.src = src;
+  });
+}
+
+function hideLoading() {
+  elLoading.classList.add("is-hidden");
+}
+
+function showLoadingError(message) {
+  document.getElementById("loadingMsg").innerHTML = message;
+  elLoading.classList.add("has-error");
+}
+
     var skinNames = [];
     var skinImages = [];
 
@@ -181,6 +213,12 @@
         elCategory.innerHTML = category;
         showSkins(weapon.skins, weapon.displayIcon, weapon.displayName);
 
+        // keep the loading screen up until the main image and background are ready
+await Promise.all([
+  waitForImage(skinImages[0]),
+  waitForImage("images/bg" + bgNumber + ".png")
+]);
+
         if (weapon.shopData != null) {
           elCost.innerHTML = weapon.shopData.cost;
         }
@@ -225,13 +263,17 @@
         `;
 
       } catch (error) {
-        console.error("Error loading weapon:", error);
-        elName.innerHTML = "Unable to load weapon.";
-        elStats.innerHTML = '<div class="p-4 text-center stat-none">Unable to load weapon data.</div>';
+  console.error("Error loading weapon:", error);
+  elName.innerHTML = "Unable to load weapon.";
+  elStats.innerHTML = '<div class="p-4 text-center stat-none">Unable to load weapon data.</div>';
+  loadFailed = true;
+  showLoadingError("Unable to load weapon. Check your connection and try again.");
 
-      } finally {
-        elLoading.style.display = "none";
-      }
+} finally {
+  if (!loadFailed) {
+    hideLoading();
+  }
+}
     };
 
     const showSkins = (skins, defaultImage, defaultName) => {
@@ -309,9 +351,9 @@
     if (id != null) {
       getWeapon();
     } else {
-      elLoading.style.display = "none";
-      elName.innerHTML = "Weapon not found.";
-    }
+  elName.innerHTML = "Weapon not found.";
+  showLoadingError("Weapon not found.");
+}
   </script>
 </body>
 
